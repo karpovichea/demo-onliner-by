@@ -1,4 +1,4 @@
-package by.onliner.pages;
+package by.onliner.pages.login;
 
 public class LoginMessage {
     public static final String EMPTY_LOGIN_FIELD = "Укажите ник или e-mail";

@@ -1,4 +1,4 @@
-package by.onliner.pages;
+package by.onliner.pages.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
