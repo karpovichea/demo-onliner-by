@@ -1,4 +1,4 @@
-package by.onliner;
+package by.onliner.pages;
 
 public class LoginLocator {
     public static final String LOGIN_FIELD = "//div[@class='auth-form__line auth-form__line_condensed']//input[@type='text']";
