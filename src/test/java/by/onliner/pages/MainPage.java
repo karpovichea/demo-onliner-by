@@ -1,19 +1,22 @@
-package by.onliner.pages.main;
+package by.onliner.pages;
 
-import by.onliner.pages.login.LoginLocator;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class MainPage {
     private final WebDriver driver;
 
+    @FindBy(xpath = "//div[@class='auth-bar__item auth-bar__item--text']")
+    WebElement signInButton;
+
     public MainPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public void clickSignInButton() {
-        WebElement signInButton = driver.findElement(By.xpath(MainLocator.SIGN_IN_BUTTON));
         signInButton.click();
     }
 }

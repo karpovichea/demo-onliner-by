@@ -1,7 +1,6 @@
 package by.onliner.tests;
 
-import by.onliner.pages.login.LoginMessage;
-import by.onliner.pages.login.LoginPage;
+import by.onliner.pages.LoginPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,25 +22,27 @@ public class LoginTest extends BaseTest {
 
         loginPage.clickSignInButton();
 
-        Assertions.assertEquals(LoginMessage.EMPTY_LOGIN_FIELD, loginPage.getEmptyLoginErrorMessage(), "Неверный текст ошибки валидации для пустого логина");
-        Assertions.assertEquals(LoginMessage.EMPTY_PASSWORD_FIELD, loginPage.getEmptyPasswordErrorMessage(), "Неверный текст ошибки валидации для пустого пароля");
+        Assertions.assertEquals(loginPage.getExpectedEmptyLoginErrorMessage(), loginPage.getEmptyLoginErrorMessage(), "Неверный текст ошибки валидации для пустого логина");
+        Assertions.assertEquals(loginPage.getExpectedEmptyPasswordErrorMessage(), loginPage.getEmptyPasswordErrorMessage(), "Неверный текст ошибки валидации для пустого пароля");
     }
 
     @Test
     @DisplayName("Тест: пустой логин")
     public void testSignInWithEmptyLogin() {
-        loginPage.enterPassword(PASSWORD);
-        loginPage.clickSignInButton();
+        loginPage
+                .enterPassword(PASSWORD)
+                .clickSignInButton();
 
-        Assertions.assertEquals(LoginMessage.EMPTY_LOGIN_FIELD, loginPage.getEmptyLoginErrorMessage(), "Неверный текст ошибки валидации для пустого логина");
+        Assertions.assertEquals(loginPage.getExpectedEmptyLoginErrorMessage(), loginPage.getEmptyLoginErrorMessage(), "Неверный текст ошибки валидации для пустого логина");
     }
 
     @Test
     @DisplayName("Тест: пустой пароль")
     public void testSignInWithEmptyPassword() {
-        loginPage.enterLogin(LOGIN);
-        loginPage.clickSignInButton();
+        loginPage
+                .enterLogin(LOGIN)
+                .clickSignInButton();
 
-        Assertions.assertEquals(LoginMessage.EMPTY_PASSWORD_FIELD, loginPage.getEmptyPasswordErrorMessage(), "Неверный текст ошибки валидации для пустого пароля");
+        Assertions.assertEquals(loginPage.getExpectedEmptyPasswordErrorMessage(), loginPage.getEmptyPasswordErrorMessage(), "Неверный текст ошибки валидации для пустого пароля");
     }
 }
